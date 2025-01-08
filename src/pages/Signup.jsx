@@ -5,9 +5,12 @@ import { useAuth } from "../hooks/useAuth";
 import { Loader } from "lucide-react";
 
 export default function Signup() {
-  const { register, handleSubmit, errors, loading, error } = useAuth(true);
+  const { register, handleSubmit, errors, loading } = useAuth(true);
 
   return (
+    <>
+    <title>Signup - Event Management</title>
+    <meta name="description" content="Signup to efficiently manage your events and bookings." />
     <div className="flex min-h-screen h-max w-full overflow-hidden rounded-xl shadow-md">
       {/* design side  */}
       <div className="relative hidden items-center justify-center bg-blue-300 md:flex md:w-[50%]">
@@ -63,5 +66,6 @@ export default function Signup() {
         </form>
       </div>
     </div>
+    </>
   );
 }

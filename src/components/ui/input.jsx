@@ -6,16 +6,18 @@ export const Input = ({
 	label,
 	error,
 	ref,
+	id,
 	...props
 }) => {
 	return (
 		<div className='w-full mx-auto'>
 			{label && (
-				<label className='mb-1 block text-sm font-medium text-gray-500'>
+				<label htmlFor={id} className='mb-1 block text-sm font-medium text-gray-500'>
 					{label}
 				</label>
 			)}
 			<input
+				id={id}
 				type={type}
 				className={clsx(
 					'block w-full rounded-lg border bg-transparent py-2 pl-4 text-zinc-600 focus:ring-1 focus:outline-none dark:text-zinc-400',
@@ -31,5 +33,4 @@ export const Input = ({
 	);
 };
 
-/* Input.displayName = 'Input';
- */
+Input.displayName = 'Input';

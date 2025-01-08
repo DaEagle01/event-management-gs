@@ -14,6 +14,7 @@ export default function CreateEvent() {
         <Input
           type="text"
           name="title"
+          id="title"
           placeholder="Enter event title"
           {...register("title")}
           label="Title"
@@ -22,6 +23,7 @@ export default function CreateEvent() {
         <Textarea
           label="Description"
           name="description"
+          id="description"
           placeholder="Enter full event description"
           {...register("description")}
           error={errors.description?.message}
@@ -30,6 +32,7 @@ export default function CreateEvent() {
         <Input
           type="datetime-local"
           name="startTime"
+          id="startTime"
           {...register("startTime")}
           label="Start Time"
           error={errors.startTime?.message}
@@ -37,6 +40,7 @@ export default function CreateEvent() {
         <Input
           type="datetime-local"
           name="endTime"
+          id="endTime"
           {...register("endTime")}
           label="End Time"
           error={errors.endTime?.message}
@@ -44,6 +48,7 @@ export default function CreateEvent() {
         <Input
           type="text"
           name="location"
+          id="location"
           placeholder="Enter event location"
           {...register("location")}
           label="Location"
