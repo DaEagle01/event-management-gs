@@ -1,8 +1,10 @@
 import { CalendarIcon, MapPinIcon, UsersIcon } from 'lucide-react';
 import moment from 'moment';
+import { Button } from '../../../components/ui/button';
 
-export function EventInfo({ event, onEdit, onDelete }) {
-    console.log(event);
+export function EventInfo({ event, onEdit, onDelete, userInfo = {} }) {
+    console.log(event?.ownerId, userInfo?.user?.id);
+    const isOwner = event?.ownerId === userInfo?.user?.id;
     return (
         <>
             <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-8">
@@ -19,20 +21,16 @@ export function EventInfo({ event, onEdit, onDelete }) {
                             <span>{moment(event?.endTime).format('MMMM D, YYYY h:mm A')}</span>
                         </div>
                     </div>
-                    <div className="space-x-2">
-                        <button
-                            onClick={onEdit}
-                            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                        >
-                            Edit Event
-                        </button>
-                        <button
-                            onClick={onDelete}
-                            className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                        >
-                            Delete Event
-                        </button>
-                    </div>
+                    {isOwner && (
+                        <div className="space-x-2">
+                            <Button onClick={onEdit}>
+                                Edit Event
+                            </Button>
+                            <Button onClick={onDelete} variant='destructive'>
+                                Delete Event
+                            </Button>
+                        </div>
+                    )}
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg">
                     <h3 className="text-xl font-semibold mb-4">About This Event</h3>

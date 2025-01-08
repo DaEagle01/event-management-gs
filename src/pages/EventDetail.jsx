@@ -8,17 +8,19 @@ import ErrorState from '../components/ui/ErrorState';
 import { EventForm } from '../features/event-management/components/EventForm';
 import { EventInfo } from '../features/event-management/components/EventInfo';
 import { DeleteModal } from '../features/event-management/components/DeleteModal';
+import { useSelector } from 'react-redux';
   
 export default function EventDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { notify } = useNotification();
+  const [isEditing, setIsEditing] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+  const { userInfo } = useSelector((state) => state.auth);
   const { data: eventData, error, isLoading, refetch } = useGetEventByIdQuery(id);
   const event = eventData?.data?.event;
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const [deleteEvent, { isLoading: isDeleting }] = useDeleteEventMutation();
   const [updateEvent, { isLoading: isUpdating }] = useUpdateEventMutation();
@@ -58,7 +60,7 @@ export default function EventDetailPage() {
       {isEditing ? (
         <EventForm event={event} setIsEditing={setIsEditing} updateEvent={updateEvent} refetch={refetch} />
       ) : (
-        <EventInfo event={event} onEdit={handleEdit} onDelete={handleDelete} />
+          <EventInfo event={event} onEdit={handleEdit} onDelete={handleDelete} userInfo={userInfo} />
       )}
 
       {showDeleteModal && (
