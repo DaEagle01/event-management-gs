@@ -31,7 +31,7 @@ const Home = () => {
     limit: searchParams.limit,
   };
 
-  const { data, error, isLoading } = useSearchEventsQuery(queryParams);
+  const { data, error, isLoading, isFetching } = useSearchEventsQuery(queryParams);
 
   let events = [];
   let pagination = {};
@@ -88,6 +88,7 @@ const Home = () => {
         onLocationChange={handleLocationChange}
         onDateChange={handleDateChange}
       />
+
       {events.length === 0 ? (
         <div className="text-center py-10 bg-gray-100 rounded-md shadow-md">
           <p className="text-lg text-gray-500">
@@ -95,7 +96,7 @@ const Home = () => {
           </p>
         </div>
       ) : (
-        <EventList events={events} userInfo={userInfo} />
+        <EventList events={events} isFetching={isFetching} userInfo={userInfo} />
       )}
 
       {totalPages > 1 && (

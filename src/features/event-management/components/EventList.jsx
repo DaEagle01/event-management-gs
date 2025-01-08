@@ -1,9 +1,9 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { Eye, Calendar, MapPin, Clock } from 'lucide-react';
+import { Eye, Calendar, MapPin, Clock, Loader } from 'lucide-react';
 import RSVPButton from "./EventRSVPButton";
 
-const EventList = ({ events, userInfo }) => {
+const EventList = ({ events, isFetching, userInfo }) => {
   if (events.length === 0) {
     return (
       <div className="text-center py-16 bg-gray-50 rounded-lg shadow-sm">
@@ -17,7 +17,9 @@ const EventList = ({ events, userInfo }) => {
   }
 
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className={`${isFetching ? 'bg-gray-200 opacity-30' : 'bg-white'} relative shadow-lg rounded-lg overflow-hidden`}>
+      {isFetching && <Loader className="animate-spin w-12 h-12 absolute inset-x-1/2 top-40 text-black opacity-100" />}
+
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50">
@@ -53,9 +55,9 @@ const EventList = ({ events, userInfo }) => {
                     <div className="flex items-center">
                       <Clock className="h-4 w-4 text-gray-400 mr-2" />
                       <span className="text-sm text-gray-600">
-                        {moment.utc(event.startTime).local().format('h:mm A')} 
-                       </span>
-                    </div> 
+                        {moment.utc(event.startTime).local().format('h:mm A')}
+                      </span>
+                    </div>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -69,9 +71,9 @@ const EventList = ({ events, userInfo }) => {
                     <div className="flex items-center">
                       <Clock className="h-4 w-4 text-gray-400 mr-2" />
                       <span className="text-sm text-gray-600">
-                         {moment.utc(event.endTime).local().format('h:mm A')}
+                        {moment.utc(event.endTime).local().format('h:mm A')}
                       </span>
-                    </div> 
+                    </div>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">

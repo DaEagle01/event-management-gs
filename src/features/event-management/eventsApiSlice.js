@@ -8,6 +8,11 @@ export const eventsApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: eventData,
             }),
+            async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                await queryFulfilled;
+                dispatch(eventsApiSlice.util.invalidateTags(['Events']));
+            },
+            invalidatesTags: ["Events"]
         }),
 
         updateEvent: builder.mutation({
@@ -18,7 +23,7 @@ export const eventsApiSlice = apiSlice.injectEndpoints({
             }),
             invalidatesTags: (result, error, { id }) => [`event_id_${id}`],
         }),
- 
+
         deleteEvent: builder.mutation({
             query: (id) => ({
                 url: `/events/${id}`,
@@ -53,7 +58,11 @@ export const eventsApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: { userId, status },
             }),
-            invalidatesTags: ["Events"]
+           /*  async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+                await queryFulfilled;
+                dispatch(eventsApiSlice.util.invalidateTags(['Events']));
+            },
+            invalidatesTags: ["Events"] */
         }),
     }),
     overrideExisting: false,
