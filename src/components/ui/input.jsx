@@ -20,7 +20,7 @@ export const Input = ({
 				id={id}
 				type={type}
 				className={clsx(
-					'block w-full rounded-lg border bg-transparent py-2 pl-4 text-zinc-600 focus:ring-1 focus:outline-none dark:text-zinc-400',
+					'block w-full rounded-lg border bg-transparent py-1 md:py-2 pl-2 md:pl-4 text-zinc-600 focus:ring-1 focus:outline-none dark:text-zinc-400',
 					`${error ? 'border-red-500 focus:ring-red-500' : 'border-blue-400 focus:ring-blue-500'}`,
 					'',
 					className

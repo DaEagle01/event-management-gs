@@ -80,8 +80,8 @@ const Home = () => {
   const { total, page, totalPages } = pagination || {};
 
   return (
-    <div className="min-h-screen space-y-6 px-4 sm:px-6 lg:px-0 pb-12">
-      <h2 className="text-3xl font-bold text-center text-gray-600 mb-8">List of Events</h2>
+    <div className="min-h-screen space-y-4 sm:space-y-6 sm:px-6 lg:px-0 pb-12">
+      <h2 className="text-xl sm:text-3xl font-bold text-center text-gray-600 sm:mb-8">List of Events</h2>
       <EventSearch
         searchParams={searchParams}
         onSearch={handleSearch}

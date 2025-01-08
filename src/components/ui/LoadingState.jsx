@@ -8,7 +8,7 @@ export default function LoadingState({ isEvent = true }) {
                 <h2 className="mt-4 text-xl font-semibold text-gray-700">
                     Loading {isEvent && "Event"} Details
                 </h2>
-                <p className="mt-2 text-gray-500">Please wait while we fetch the {isEvent && "event"} information.</p>
+                <p className="mt-2 text-gray-500 text-center">Please wait while we fetch the {isEvent && "event"} information.</p>
             </div>
         </div>
     )

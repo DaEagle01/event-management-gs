@@ -1,7 +1,7 @@
 import { Input } from "../../../components/ui/input";
 
 const EventSearch = ({ searchParams, onSearch, onLocationChange, onDateChange }) => (
-    <div className="flex flex-col sm:flex-row gap-4 mb-6">
+    <div className="flex flex-col sm:flex-row gap-2 md:gap-4 mb-6">
         <Input
             type="text"
             placeholder="Search by title"

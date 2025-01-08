@@ -3,15 +3,14 @@ import moment from 'moment';
 import { Button } from '../../../components/ui/button';
 
 export function EventInfo({ event, onEdit, onDelete, userInfo = {} }) {
-    console.log(event?.ownerId, userInfo?.user?.id);
     const isOwner = event?.ownerId === userInfo?.user?.id;
     return (
         <>
-            <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-8">
-                <h2 className="text-4xl font-bold mb-2">{event?.title}</h2>
-                <p className="text-xl opacity-90">{event?.location}</p>
+            <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 sm:p-8">
+                <h2 className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2">{event?.title}</h2>
+                <p className="text-lg sm:text-xl opacity-90">{event?.location}</p>
             </div>
-            <div className="p-8 space-y-8">
+            <div className="p-4 sm:p-8 space-y-6 sm:space-y-8">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
                     <div className="flex flex-col sm:flex-row sm:space-x-8 space-y-4 sm:space-y-0">
                         <div className="flex items-center text-gray-600">
@@ -32,7 +31,7 @@ export function EventInfo({ event, onEdit, onDelete, userInfo = {} }) {
                         </div>
                     )}
                 </div>
-                <div className="bg-gray-50 p-6 rounded-lg">
+                <div className="bg-gray-50 p-3 sm:p-6 rounded-lg">
                     <h3 className="text-xl font-semibold mb-4">About This Event</h3>
                     <p className="text-gray-700 leading-relaxed">{event?.description}</p>
                 </div>
